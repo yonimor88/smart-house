@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/smart-house/static/css/main.0e70d848.chunk.css",
-    "main.js": "/smart-house/static/js/main.86bb3fee.chunk.js",
-    "main.js.map": "/smart-house/static/js/main.86bb3fee.chunk.js.map",
+    "main.js": "/smart-house/static/js/main.fca47093.chunk.js",
+    "main.js.map": "/smart-house/static/js/main.fca47093.chunk.js.map",
     "runtime-main.js": "/smart-house/static/js/runtime-main.e0a1f3a3.js",
     "runtime-main.js.map": "/smart-house/static/js/runtime-main.e0a1f3a3.js.map",
-    "static/js/2.fb73b374.chunk.js": "/smart-house/static/js/2.fb73b374.chunk.js",
-    "static/js/2.fb73b374.chunk.js.map": "/smart-house/static/js/2.fb73b374.chunk.js.map",
+    "static/js/2.16623119.chunk.js": "/smart-house/static/js/2.16623119.chunk.js",
+    "static/js/2.16623119.chunk.js.map": "/smart-house/static/js/2.16623119.chunk.js.map",
     "index.html": "/smart-house/index.html",
-    "precache-manifest.3990f89a23298e965bd1f159b418fbff.js": "/smart-house/precache-manifest.3990f89a23298e965bd1f159b418fbff.js",
+    "precache-manifest.df7026ef727c836be23581d385d1102c.js": "/smart-house/precache-manifest.df7026ef727c836be23581d385d1102c.js",
     "service-worker.js": "/smart-house/service-worker.js",
     "static/css/main.0e70d848.chunk.css.map": "/smart-house/static/css/main.0e70d848.chunk.css.map",
-    "static/js/2.fb73b374.chunk.js.LICENSE.txt": "/smart-house/static/js/2.fb73b374.chunk.js.LICENSE.txt",
+    "static/js/2.16623119.chunk.js.LICENSE.txt": "/smart-house/static/js/2.16623119.chunk.js.LICENSE.txt",
     "static/media/Homepage_icon.png": "/smart-house/static/media/Homepage_icon.83a69d24.png",
     "static/media/smart-home-logo.png": "/smart-house/static/media/smart-home-logo.7365bc17.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e0a1f3a3.js",
-    "static/js/2.fb73b374.chunk.js",
+    "static/js/2.16623119.chunk.js",
     "static/css/main.0e70d848.chunk.css",
-    "static/js/main.86bb3fee.chunk.js"
+    "static/js/main.fca47093.chunk.js"
   ]
 }
