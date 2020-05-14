@@ -53,7 +53,7 @@ input ,textarea, select{
     font-size: 24px;
     outline: none;
     -webkit-appearance: none;
-    background-color: #4ec3f1;
+    background-color: #7ec52d;
 
 }
 
@@ -75,7 +75,7 @@ button{
   font-weight:300;
   text-align:center;
   transition: all 0.2s;
-  background-color:#4ec3f1;
+  background-color:#7ec52d;
   font-size: 25px;
   outline: none;
 }

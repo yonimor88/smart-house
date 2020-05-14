@@ -18,13 +18,13 @@ export default function Room(props) {
   return (
     <div className="Room">
       <div className="info" style={{display:showInfo}}>
-        <h3>Room Type:{/* the value displayed here is configured by the user in add room*/}</h3>
-        <h3>Room Name:{/* the value displayed here is configured by the user in add room*/}</h3>
+        <h3>Room Type: {props.roomType}</h3>
+        <h3>Room Name: {props.roomName}</h3>
         <button onClick={roomInfo}>Add Device</button>
       </div>
       <div className="devices" style={{display:showDevices}}>
         <select name="choose-product" id="choose-product">
-          <option hidden disabled value>Choose a Device</option>
+          <option hidden disabled selected value>Choose a Device</option>
           <option value="Air-Conditioner">Air-Conditioner</option>
           <option value="Boiler">Boiler</option>
           <option value="Stereo">Stereo</option>

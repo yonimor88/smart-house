@@ -1,64 +1,84 @@
-import React ,{useState}from 'react'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export default function AddRoom(props) {
+  const [errMessege, setErrMessege] = useState("none");
+  const [inputColor, setInputColor] = useState("");
+  const [flag, setFlag] = useState(false);
+  const [roomName, setRoomName] = useState(null);
+  const [newRoomName, setNewRoomName] = useState([]);
+  const [roomColor, setRoomType] = useState(null);
+  const [newRoomColor, setNewRoomType] = useState([]);
+  const [roomType, setRoomColor] = useState(null);
+  const [newRoomType, setNewRoomColor] = useState([]);
 
-// onChange function that limits the available inputed keys in #room-name to 5
-const [validName, setValidName]=useState('#4ec3f1')
-const [errMessege, setErrMessege]=useState('none')
-const [flag, setFlag]=useState(false)
-const [color, setColor]=useState('')
-const [roomPicked, setRoomPicked]=useState('')
-// const [ButtonDisplay, setButtonDisplay]=useState('none')
-
-
-const validNameFunction = (e) =>{
-    if (e.target.value.length <= 5){
-        setValidName('lightgreen')
-        setFlag(true)
+  const roomNameFunction = e => {
+    if (e.target.value.length <= 5) {
+      setInputColor("lightgreen");
+      setRoomName(e.target.value);
+      if (roomColor !== "" && roomType !== "") {
+        setFlag(true);
+      }
     } else {
-        setValidName('red')
-        setErrMessege('inline')
-        setFlag(false)
+      setInputColor("red");
+      setErrMessege("inline");
+      setFlag(false);
     }
-}
+  };
 
-const colorInput = (e) =>{
-setColor(e.target.value)
-}
-const roomInput = (e) =>{
-    setRoomPicked(e.target.value)
+
+  const roomCreateFunction = () => {
+    setRoomName([roomName => roomName.concat([roomName])])
+    setRoomType([roomType=>roomType.concat([roomType])])
+    setRoomColor([roomColor=>roomColor.concat([roomColor])])
+    props.changeRoomName([roomName]);
+    props.changeRoomColor([roomColor]);
+    props.changeRoomType([roomType]);
+    if (flag === true) {
+      props.changeRoomData([{name:props.roomName, color: roomColor, type:roomType}])
+      alert(`${roomName} is now registered as a new room`);
+    } else {
+      alert("Room registeration failed");
     }
-// function that recieves the added value from #room-color and translate it to an existing color
+  };
 
-// onclick function that recieves the data received from the two inputs above and the selector and validates them-
-// the inputs must have at least 1 character and that a room is selected, if not, the user will receieve an alert-
-// that will return the user to the homepage, if the user inserted the valid data, the user will return to the-
-// homepage and will see the new added rooms
+  return (
+    <div className="Addroom">
+      <select
+        name="Choose a room"
+        id="rooms"
+        onChange={e => {setRoomType(e.target.value);}}>
+        <option hidden disabled selected value>Choose a room{" "}</option>
+        <option value="bedroom">Bedroom</option>
+        <option value="bathroom">Bathroom</option>
+        <option value="kitchen">Kitchen</option>
+      </select>
+      <br />
+      <br />
+      <input
+        onChange={roomNameFunction}
+        id="room-name"
+        placeholder="Room Name"
+        style={{ background: inputColor }}
+      ></input>
+      <br />
+      <p id="err" style={{ display: errMessege, color: inputColor }}>
+        Room Name Must contain 5 or less characters
+      </p>
+      <br />
+      <label forhtml="room-color">Select Room Color: </label>
+      <br />
+      <input
+        id="room-color"
+        placeholder="Room Color"
+        type="color"
+        onChange={e => {setRoomColor(e.target.value);}}></input>
+      <br />
+      <br />
 
-    return (
-        <div className='Addroom'>
-            <select name='Choose a room'id="rooms" onChange={roomInput}>
-            <option hidden disabled selected value>Choose a room </option>
-            <option value="bedroom">Bedroom</option>
-            <option value="bathroom">Bathroom</option>
-            <option value="kitchen">Kitchen</option>
-            </select>
-            <br/>
-            <br/>
-            <input onChange={validNameFunction} id='room-name' placeholder='Room Name' style={{background:validName}}></input>
-            <br/>
-            <p id='err' style={{display:errMessege, color:'red'}}>Room Name Must contain 5 or less characters</p>
-            <br/>
-            <label forhtml='room-color'>Select Room Color: </label>
-            <br/>
-            <input id='room-color' placeholder='Room Color' type='color' onChange={colorInput}></input>
-            <br/>
-            <br/>
-
-            <Link id="link" to="/"><button id='create'>Create</button></Link>
-
-        </div>
-    )
+      <Link to="/"><button id="create" onClick={roomCreateFunction}>
+        Create
+      </button></Link>
+    </div>
+  );
 }
