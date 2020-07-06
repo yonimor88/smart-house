@@ -9,6 +9,10 @@
   grid-template-rows: auto auto;
   background-repeat: no-repeat;
   background-size: 550px;
+  border-style: solid;
+  border-radius:2em;
+ 
+
 }
 
 
@@ -16,12 +20,7 @@
   height: 150px;
   grid-column-start: 2;
   grid-row: 1;
-  border-style: solid;
-  border-color: black;
-  border-bottom: none;
-  border-radius:2em;
-  border-bottom-left-radius:0;
-  border-bottom-right-radius:0;
+ 
 
 }
 #logo{
@@ -31,12 +30,6 @@
   height: auto;
   grid-column: 2;
   grid-row: 2;
-  border-style: solid;
-  border-color: black;
-  border-top: none;
-  border-radius:2em;
-  border-top-left-radius:0;
-  border-top-right-radius:0;
 
 }
 .homepage-layout{

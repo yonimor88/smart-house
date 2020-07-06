@@ -9,25 +9,23 @@ import { Link } from "react-router-dom";
 
 
 function App() {
-  const [roomName, setRoomName] = useState(null);
-  const [roomColor, setRoomType] = useState(null);
-  const [roomType, setRoomColor] = useState(null);
-  const [roomData, setRoomData] = useState([{ name: roomName, color: roomColor, type: roomType }]);
-  const [newRoom, setNewRoom]=useState([])
 
-  const changeRoomName = Name => {
-    setRoomName(Name);
+  const [roomData, setRoomData]= useState([])
+
+  const newRoomData= (roomName, roomColor, roomType) =>{
+    setRoomData([
+      ...roomData,{
+        roomName: roomName,
+        roomColor: roomColor,
+        roomType: roomType
+      }
+    ])
+  }
+
+  const remove = (i) => {
+    const newRoomData = roomData.filter((element, index) => index != i);
+    setRoomData([...newRoomData]);
   };
-  const changeRoomColor = Color => {
-    setRoomColor(Color);
-  };
-  const changeRoomType = Type => {
-    setRoomType(Type);
-  };
-  const changeRoomData = data => {
-    setRoomData(data);
-  };
- 
 
   return (
     <div className="App">
@@ -41,49 +39,45 @@ function App() {
               return (
                 <Homepage
                   roomData={roomData}
-                  changeRoomData={changeRoomData}
-                  roomName={roomName}
-                  changeRoomName={changeRoomName}
-                  roomColor={roomColor}
-                  changeRoomColor={changeRoomColor}
-                  roomType={roomType}
-                  changeRoomType={changeRoomType}
+                  rooomName={roomData.roomName}
+                  roomColor={roomData.roomColor}
+                  roomType={roomData.roomType}
                 />
               );
             }}
           />
-          <Route
+          {
+            roomData.map((roomData, i )=> (
+<Route
             exact
-            path="/room"
+            path={`/room${i}`}
             component={() => {
               return (
                 <Room
-                  roomData={roomData}
-                  changeRoomData={changeRoomData}
-                  roomName={roomName}
-                  changeRoomName={changeRoomName}
-                  roomColor={roomColor}
-                  changeRoomColor={changeRoomColor}
-                  roomType={roomType}
-                  changeRoomType={changeRoomType}
+                roomData={roomData}
+                roomName={roomData.roomName}
+                roomColor={roomData.roomColor}
+                roomType={roomData.roomType}
+                index={i}
+                remove={remove}
                 />
               );
             }}
           />
+            ))
+          }
+          
           <Route
             exact
             path="/addroom"
             component={() => {
               return (
                 <AddRoom
-                  roomData={roomData}
-                  changeRoomData={changeRoomData}
-                  roomName={roomName}
-                  changeRoomName={changeRoomName}
-                  roomColor={roomColor}
-                  changeRoomColor={changeRoomColor}
-                  roomType={roomType}
-                  changeRoomType={changeRoomType}
+                newRoomData={newRoomData}
+                roomData={roomData}
+                rooomName={roomData.roomName}
+                roomColor={roomData.roomColor}
+                roomType={roomData.roomType}
                 />
               );
             }}

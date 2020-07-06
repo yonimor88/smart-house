@@ -6,11 +6,8 @@ export default function AddRoom(props) {
   const [inputColor, setInputColor] = useState("");
   const [flag, setFlag] = useState(false);
   const [roomName, setRoomName] = useState(null);
-  const [newRoomName, setNewRoomName] = useState([]);
   const [roomColor, setRoomType] = useState(null);
-  const [newRoomColor, setNewRoomType] = useState([]);
   const [roomType, setRoomColor] = useState(null);
-  const [newRoomType, setNewRoomColor] = useState([]);
 
   const roomNameFunction = e => {
     if (e.target.value.length <= 5) {
@@ -28,14 +25,8 @@ export default function AddRoom(props) {
 
 
   const roomCreateFunction = () => {
-    setRoomName([roomName => roomName.concat([roomName])])
-    setRoomType([roomType=>roomType.concat([roomType])])
-    setRoomColor([roomColor=>roomColor.concat([roomColor])])
-    props.changeRoomName([roomName]);
-    props.changeRoomColor([roomColor]);
-    props.changeRoomType([roomType]);
     if (flag === true) {
-      props.changeRoomData([{name:props.roomName, color: roomColor, type:roomType}])
+      props.newRoomData(roomName, roomType, roomColor)
       alert(`${roomName} is now registered as a new room`);
     } else {
       alert("Room registeration failed");

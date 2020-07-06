@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 
 export default function Homepage(props) {
   // need to add a function that by pressing the '+' button it will transfer the user to the 'AddRoom' page
-
   
+console.log(props.roomData);
 
   return (
     <div className="Homepage">
-        <Link to="/room">
-          <button style={{ backgroundColor: props.roomColor }}>{props.roomName}</button>
+      {
+        props.roomData.map((roomData, i)=> (
+          <Link to={`room${i}`}>
+          <button key={i} style={{ backgroundColor: roomData.roomColor }}>{roomData.roomName}</button>
         </Link>
+        ))
+      }
         <br/>
         <br/>
         <br/>
