@@ -12,20 +12,25 @@ function App() {
 
   const [roomData, setRoomData]= useState([])
 
-  const newRoomData= (roomName, roomColor, roomType) =>{
+
+  const newRoomData= (roomName, roomColor, roomType, roomDevices) =>{
     setRoomData([
       ...roomData,{
-        roomName: roomName,
-        roomColor: roomColor,
-        roomType: roomType
+         roomName: roomName,
+         roomColor: roomColor,
+         roomType: roomType,
+         roomDevices:roomDevices
       }
     ])
   }
+  
 
   const remove = (i) => {
-    const newRoomData = roomData.filter((element, index) => index != i);
+    const newRoomData = roomData.filter((element, index) => index !== i);
     setRoomData([...newRoomData]);
   };
+
+
 
   return (
     <div className="App">
@@ -48,16 +53,18 @@ function App() {
           />
           {
             roomData.map((roomData, i )=> (
-<Route
+          <Route
             exact
             path={`/room${i}`}
             component={() => {
               return (
                 <Room
+                newRoomDevices={newRoomData}
                 roomData={roomData}
                 roomName={roomData.roomName}
                 roomColor={roomData.roomColor}
                 roomType={roomData.roomType}
+                roomDevices={roomData.roomDevices}
                 index={i}
                 remove={remove}
                 />

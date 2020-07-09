@@ -25,7 +25,7 @@ export default function AddRoom(props) {
 
 
   const roomCreateFunction = () => {
-    if (flag === true) {
+    if (flag) {
       props.newRoomData(roomName, roomType, roomColor)
       alert(`${roomName} is now registered as a new room`);
     } else {
@@ -34,7 +34,7 @@ export default function AddRoom(props) {
   };
 
   return (
-    <div className="Addroom">
+    <div className="AddRoom">
       <select
         name="Choose a room"
         id="rooms"
@@ -67,7 +67,7 @@ export default function AddRoom(props) {
       <br />
       <br />
 
-      <Link to="/"><button id="create" onClick={roomCreateFunction}>
+      <Link to="/"><button className="create" onClick={roomCreateFunction}>
         Create
       </button></Link>
     </div>
