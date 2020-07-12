@@ -5,15 +5,14 @@ import Room from "./components/Room";
 import AddRoom from "./components/AddRoom";
 import Homepage from "./components/Homepage";
 import Header from "./components/Header";
-import { Link } from "react-router-dom";
 
 
 function App() {
 
   const [roomData, setRoomData]= useState([])
+  const [roomDevices, setRoomDevices]=useState([])
 
-
-  const newRoomData= (roomName, roomColor, roomType, roomDevices) =>{
+  const newRoomData= (roomName, roomColor, roomType) =>{
     setRoomData([
       ...roomData,{
          roomName: roomName,
@@ -24,6 +23,13 @@ function App() {
     ])
   }
   
+  const newRoomDevices= (roomDevices) =>{
+    setRoomDevices([
+      ...roomData,{
+         roomDevices:roomDevices
+      }
+    ])
+  }
 
   const remove = (i) => {
     const newRoomData = roomData.filter((element, index) => index !== i);
@@ -59,7 +65,7 @@ function App() {
             component={() => {
               return (
                 <Room
-                newRoomDevices={newRoomData}
+                newRoomDevices={newRoomDevices}
                 roomData={roomData}
                 roomName={roomData.roomName}
                 roomColor={roomData.roomColor}
