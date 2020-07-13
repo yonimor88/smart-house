@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function AddRoom(props) {
   const [errMessege, setErrMessege] = useState("none");
   const [inputColor, setInputColor] = useState("");
-  const [flag, setFlag] = useState(false);
   const [roomName, setRoomName] = useState(null);
   const [roomColor, setRoomColor] = useState(null);
   const [roomType, setRoomType] = useState(null);
@@ -20,20 +19,14 @@ export default function AddRoom(props) {
     if (e.target.value.length <= 5 && e.target.value.length >0) {
       setInputColor("lightgreen");
       setRoomName(e.target.value);
-      
-      if (roomColor !== null && roomType !== null) {
-        setFlag(true);
-      }
     } else {
       setInputColor("red");
       setErrMessege("inline");
-      setFlag(false);
     }
   };
 
-
   const roomCreateFunction = () => {
-    if (flag) {
+    if (roomColor !== null && roomType !== null && roomName !== null) {
       props.newRoomData(roomName, roomColor, roomType)
       // alert(`${roomName} is now registered as a new room`);
     } else {

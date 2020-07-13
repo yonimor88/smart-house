@@ -21,10 +21,8 @@
 input ,textarea, select{
     outline: none;
     padding: 0;
-    border: 1;
     border-radius: 25px;
     text-align: center;
-    width: 50px;
     height: 50px;
     font-size: 24px;
     outline: none;
@@ -32,9 +30,16 @@ input ,textarea, select{
     background-color: #7ec52d;
 
 }
-
+input[type="color"] {
+	-webkit-appearance: none;
+  border: none;
+}
 input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 10px;
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 25px;
+  
 }
 
 select{
