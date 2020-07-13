@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function AddRoom(props) {
@@ -9,7 +9,14 @@ export default function AddRoom(props) {
   const [roomColor, setRoomColor] = useState(null);
   const [roomType, setRoomType] = useState(null);
 
+
+  useEffect(() => {
+    
+    setRoomColor(roomColor)
+  }, [roomColor])
+
   const roomNameFunction = e => {
+    
     if (e.target.value.length <= 5 && e.target.value.length >0) {
       setInputColor("lightgreen");
       setRoomName(e.target.value);
